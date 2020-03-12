@@ -11,6 +11,7 @@
 
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';
+import addMore from './modules/addMore';
 // import slowScroll from './modules/slowScroll';
 // import tabs from './modules/tabs';
 // import calculate from './modules/calculate';
@@ -23,6 +24,8 @@ import Validator from './modules/validator';
 toglePopup();
 //аккордион
 accordion();
+// кнопка Больше...
+addMore();
 
 //прокрутка до услуг
 // slowScroll();
