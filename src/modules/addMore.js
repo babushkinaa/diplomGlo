@@ -14,6 +14,7 @@ const addMore = () => {
                 }
             }            
         }
+        addSentenceBtn.style.display = 'none';
     });
 };
 
