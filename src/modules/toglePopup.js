@@ -1,33 +1,27 @@
 'use strict';
 
 const toglePopup = () =>{
-    const popUp = document.querySelector('.popup');
-
-    // открываем popup
-    const showPopup = () => {
-        if( document.documentElement.clientWidth <= 768 ){
-            popUp.style.display = 'block';
-       } else{
-            popUp.style.display = 'block';
-            popUp.style.opacity = 0;
-            let op = 0;
-            const setOpacity = () => {
-                let opacity;
-                    if( op < 1 ) {
-                        let opacity = requestAnimationFrame(setOpacity);
-                        op +=0.04;
-                        popUp.style.opacity = op;
-                    
-                    } else{
-                        cancelAnimationFrame(opacity);
-                    }
-            }
-            setOpacity();
-       }
+    const popUp = document.querySelector('.popup-call');
+    const showPopup = () =>{
+        popUp.style.display = 'block';
+        popUp.style.opacity = 0;
+        let op = 0;
+        const setOpacity = () => {
+            let opacity;
+                if( op < 1 ) {
+                    opacity = requestAnimationFrame(setOpacity);
+                    op +=0.04;
+                    popUp.style.opacity = op;
+                
+                } else{
+                    cancelAnimationFrame(opacity);
+                }
+        }
+        setOpacity();
     };
-    // закрываем по крестику
+
     const closePopup = () => {
-        let op = 1, opacity;
+        let op = 1;
         const setOpacity = () => {
             let opacity;
                 if( op > 0 ) {
@@ -42,9 +36,9 @@ const toglePopup = () =>{
         }
         setOpacity();
     };
-    // закрываем если нажали нафон
+
     const closePopupBg = () => {
-        let op = 1, opacity;
+        let op = 1;
         const setOpacity = () => {
             let opacity;
                 if( op > 0 ) {
@@ -60,19 +54,18 @@ const toglePopup = () =>{
         setOpacity();
     };
 
-    document.addEventListener('click', (event) => {
-        let target = event.target;
-        if (target.closest('.popup-btn')) {
+    document.addEventListener('click',(event)=>{
+        const target = event.target;
+        if (target.closest('.call-btn')) {
             showPopup();
         }
         if (target.closest('.popup-close')) {
             closePopup();
         }
-        if (!target.closest('.popup-content') && !target.closest('.form-btn')) {
+        if (target.closest('.popup-call') && !target.closest('.capture-form')) {
             closePopupBg();
         }
     });
-
 
 }
 

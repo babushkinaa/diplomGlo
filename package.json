@@ -1,7 +1,6 @@
 {
-  "name": "3dGloDiplom",
+  "name": "diplom",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode=development",
@@ -9,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/babushkinaa/3dGlo.git"
+    "url": "git+https://github.com/babushkinaa/diplomGlo.git"
   },
   "keywords": [],
   "author": "",
@@ -34,5 +33,6 @@
     "fetch-polyfill": "^0.8.2",
     "formdata-polyfill": "^3.0.19",
     "nodelist-foreach-polyfill": "^1.2.0"
-  }
+  },
+  "description": ""
 }

@@ -9,7 +9,7 @@
 // import 'fetch-polyfill';
 
 
-// import toglePopup from './modules/toglePopup';
+import toglePopup from './modules/toglePopup';
 // import slowScroll from './modules/slowScroll';
 // import tabs from './modules/tabs';
 // import calculate from './modules/calculate';
@@ -18,9 +18,8 @@ import sendForm from './modules/sendForm';
 import Validator from './modules/validator';
 
 
-
 // popup
-// toglePopup();
+toglePopup();
 //прокрутка до услуг
 // slowScroll();
 //табы наши услуги
@@ -36,7 +35,7 @@ maskPhone('#phone_3');
     //форма portfolio
 maskPhone('#phone_2');
     //форма question
-maskPhone('#phone_13');
+// maskPhone('#phone_13');
 
 // валидатор формы
 	//форма heder
@@ -53,7 +52,7 @@ const validatorForms = new Validator({
         }
 });
 validatorForms.init();
-   //форма получить расчет
+//    форма получить расчет
 const validatorForms2 = new Validator({
         selector: '#sectionForm', // что валидируем
         pattern: { 
@@ -72,36 +71,4 @@ const validatorForms2 = new Validator({
         }
 });
 validatorForms2.init();
-    // форма остались вопросы
-const validatorForms3 = new Validator({
-    selector: '.director-form', // что валидируем
-    pattern: { 
-        youMessage: /^[А-ЯЁа-яё]*$/,
-    },
-    method: {
-        'question':[ 
-            ['notEmpty'], 
-            ['pattern', 'youMessage'] 
-        ]
-    }
-});
-validatorForms3.init();
-   //форма popup-call
-const validatorForms4 = new Validator({
-    selector: '.popup-call', // что валидируем
-    pattern: { 
-        youName: /^[А-ЯЁа-яё]*$/
-        // youMessage: /^[А-ЯЁа-яё]*$/,
-    },
-    method: {
-        'phone_1':[ 
-            ['notEmpty'], 
-            ['pattern', 'phone'] 
-        ],
-        'name_1':[
-            ['notEmpty'], 
-            ['pattern', 'youName'] 
-        ]
-    }
-});
-validatorForms4.init();
+
