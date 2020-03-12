@@ -29,7 +29,12 @@ const sendForm = () =>{
         const target = event.target;      
         if( target.querySelector('.phone-user') && target.querySelector('.phone-user').matches('.error') ) return;
         if( target.querySelector('.user-name') && target.querySelector('.user-name').matches('.error') ) return;
-        if (target.querySelector('#question') && target.querySelector('#question').matches('.error')) return;
+        if (target.querySelector('#question') && target.querySelector('#question')){
+            target.preventDefault();
+            return;
+        }; 
+        
+        // if (target.querySelector('#question') && target.querySelector('#question').matches('.error')) return;
         
         // if (target.querySelector('#'+target.id+'-name').matches('.error') || 
         //     target.querySelector('#'+target.id+'-email').matches('.error') ||

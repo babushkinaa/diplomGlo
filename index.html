@@ -133,7 +133,7 @@
                     <div class="panel panel-default panel-one wow fadeInLeft">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
                                     <span class="link-text">1. Тип септика</span>
                                 </a>
@@ -369,13 +369,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne-two" class="panel-collapse collapse in" role="tabpanel"
+                <div id="collapseOne-two" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingOne">
                     <div class="panel-body">
                         Вероятность того, что вода в подводящем трубопроводе замерзнет, отсутствует, потому что она
@@ -390,13 +390,13 @@
                 <div class="panel-heading" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
-                           href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
+                           href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two" >
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo-two" class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseTwo-two" class="panel-collapse collapse in" role="tabpanel"
                      aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Нет, не может. Армированное изделие и марка бетона М-350, позволяют выдерживать значительные
@@ -440,7 +440,7 @@
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
                 <form class="director-form">
-                    <input type="text" name="user_quest" placeholder="Введите свой вопрос" required>
+                    <input type="text" name="user_quest" placeholder="Введите свой вопрос" id="question" required>
                     <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
                         консультацию
                     </button>

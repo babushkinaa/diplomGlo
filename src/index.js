@@ -10,6 +10,7 @@
 
 
 import toglePopup from './modules/toglePopup';
+import accordion from './modules/accordion';
 // import slowScroll from './modules/slowScroll';
 // import tabs from './modules/tabs';
 // import calculate from './modules/calculate';
@@ -20,6 +21,9 @@ import Validator from './modules/validator';
 
 // popup
 toglePopup();
+//аккордион
+accordion();
+
 //прокрутка до услуг
 // slowScroll();
 //табы наши услуги
@@ -71,4 +75,18 @@ const validatorForms2 = new Validator({
         }
 });
 validatorForms2.init();
+//    форма остались вопросы
+const validatorForms3 = new Validator({
+    selector: '.director-form', // что валидируем
+    pattern: { 
+        youMessage: /^[А-ЯЁа-яё]*$/,
+    },
+    method: {
+        'question':[ 
+            ['notEmpty'], 
+            ['pattern', 'youMessage'] 
+        ]
+    }
+});
+validatorForms3.init();
 

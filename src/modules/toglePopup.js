@@ -4,6 +4,7 @@ const toglePopup = () =>{
     const popUp = document.querySelector('.popup-call');
     const popDiscount = document.querySelector('.popup-discount');
     const popupCheck = document.querySelector('.popup-check');
+    const popupСonsultation = document.querySelector('.popup-consultation');
 
     const showPopup = (elem) => {
         elem.style.display = 'block';
@@ -15,7 +16,6 @@ const toglePopup = () =>{
                     opacity = requestAnimationFrame(setOpacity);
                     op +=0.04;
                     elem.style.opacity = op;
-                
                 } else{
                     cancelAnimationFrame(opacity);
                 }
@@ -31,7 +31,6 @@ const toglePopup = () =>{
                     opacity = requestAnimationFrame(setOpacity);
                     op -=0.08;
                     elem.style.opacity = op;
-                
                 } else{
                     cancelAnimationFrame(opacity);
                     elem.style.display = 'none';
@@ -48,7 +47,6 @@ const toglePopup = () =>{
                     opacity = requestAnimationFrame(setOpacity);
                     op -=0.3;
                     elem.style.opacity = op;
-                
                 } else{
                     cancelAnimationFrame(opacity);
                     elem.style.display = 'none';
@@ -60,8 +58,11 @@ const toglePopup = () =>{
     document.addEventListener('click',(event)=>{
         
         const target = event.target;
-        console.dir( target);
-
+        // console.dir( target);
+        // console.log(target.tagName);
+        if (target.tagName.toLowerCase() === 'span' ) {
+            return;
+        }
         if (target.closest('.call-btn')) {
             showPopup(popUp);
         }
@@ -70,6 +71,14 @@ const toglePopup = () =>{
         }
         if (target.closest('.check-btn')) {
             showPopup(popupCheck);
+        }
+        if (target.closest('.construct-btn')) {
+            showPopup(popDiscount);
+            //нужно сохранить данные с калькулятора
+        }
+        if (target.closest('.director-btn')) {
+            showPopup(popupСonsultation);
+            //нужно сохранить данные с сообщением
         }
         if (target.closest('.popup-close')) {
             if (target.closest('.popup-call')) {
@@ -81,6 +90,9 @@ const toglePopup = () =>{
             if (target.closest('.popup-check')) {
                 closePopup(popupCheck);
             }
+            if (target.closest('.popup-consultation')) {
+                closePopup(popupСonsultation);
+            }
         }
         if (target.closest('.popup-call') && !target.closest('.capture-form')) {
             closePopupBg(popUp);
@@ -90,6 +102,9 @@ const toglePopup = () =>{
         }
         if (target.closest('.popup-check') && !target.closest('.capture-form')) {
             closePopupBg(popupCheck);
+        }
+        if (target.closest('.popup-consultation') && !target.closest('.capture-form')) {
+            closePopupBg(popupСonsultation);
         }
     });
 
