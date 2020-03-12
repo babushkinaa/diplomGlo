@@ -1,0 +1,33 @@
+    // форма остались вопросы
+// const validatorForms3 = new Validator({
+//     selector: '.director-form', // что валидируем
+//     pattern: { 
+//         youMessage: /^[А-ЯЁа-яё]*$/,
+//     },
+//     method: {
+//         'question':[ 
+//             ['notEmpty'], 
+//             ['pattern', 'youMessage'] 
+//         ]
+//     }
+// });
+// validatorForms3.init();
+   //форма popup-call
+// const validatorForms4 = new Validator({
+//     selector: '.popup-call', // что валидируем
+//     pattern: { 
+//         youName: /^[А-ЯЁа-яё]*$/
+//         // youMessage: /^[А-ЯЁа-яё]*$/,
+//     },
+//     method: {
+//         'phone_1':[ 
+//             ['notEmpty'], 
+//             ['pattern', 'phone'] 
+//         ],
+//         'name_1':[
+//             ['notEmpty'], 
+//             ['pattern', 'youName'] 
+//         ]
+//     }
+// });
+// validatorForms4.init();
