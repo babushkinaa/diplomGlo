@@ -31,110 +31,131 @@ const calcResult = document.querySelector('#calc-result'),
             twoBoxRingSelect.style.visibility='visible' ;
         };
 
-
+        
+        calcResult.value = sendData.priceBox = 10000;
+        sendData.bottomBox = true;
+        sendData.oneBoxDiametr = '1.4 метра';
+        sendData.oneBoxRing = '1 штука';
+        sendData.twoBoxDiametr = false;
+        sendData.twoBoxRing = false;
+        sendData.countDistance = 'Не указана';
+        sendData.priceBoxResult = 0;
 
         const showPrice = () => {
-            calcResult.value = sendData.priceBox + ' руб.';
-        };
-        
+            let result ;
+            const oneBoxDiametr = parseFloat( sendData.oneBoxDiametr ),
+                    twoBoxDiametr = sendData.twoBoxDiametr ? parseFloat( sendData.twoBoxDiametr ) : false,
+                    oneBoxRing = parseFloat( sendData.oneBoxRing ),
+                    twoBoxRing = sendData.twoBoxRing ? parseFloat( sendData.twoBoxRing ) : false,
+                    bottomBox = sendData.bottomBox;
+            let oneBoxDiametrPrice = 0,
+                twoBoxDiametrPrice = 0,
+                oneBoxRingPrice = 0,
+                twoBoxRingPrice = 0,
+                bottomBoxPrice = 0,
+                twobottomBoxPrice = 0;
 
+
+            if (sendData.priceBox === 10000) {
+                result = sendData.priceBox;
+
+                if (oneBoxDiametr === 2) {
+                    oneBoxDiametrPrice = +sendData.priceBox * 0.2;
+                }
+                if (oneBoxRing === 2) {
+                    oneBoxRingPrice = +sendData.priceBox * 0.3;
+                } else if (oneBoxRing === 3) {
+                    oneBoxRingPrice = +sendData.priceBox * 0.5;
+                }
+                bottomBoxPrice = bottomBox ? 1000 : 0;
+            }
+            if (sendData.priceBox === 15000) {
+                result = sendData.priceBox;
+
+                if (oneBoxDiametr === 2) {
+                    oneBoxDiametrPrice = +sendData.priceBox * 0.2;
+                }
+                if (twoBoxDiametr === 2) {
+                    twoBoxDiametrPrice = +sendData.priceBox * 0.2;
+                }
+                if (oneBoxRing === 2) {
+                    oneBoxRingPrice = +sendData.priceBox * 0.3;
+                } else if (oneBoxRing === 3) {
+                    oneBoxRingPrice = +sendData.priceBox * 0.5;
+                }
+                if (twoBoxRing === 2) {
+                    twoBoxRingPrice = +sendData.priceBox * 0.3;
+                } else if (twoBoxRing === 3) {
+                    twoBoxRingPrice = +sendData.priceBox * 0.5;
+                }
+                if (bottomBox) {
+                    bottomBoxPrice = 1000;
+                    twobottomBoxPrice = 2000;
+                }
+
+            }
+            sendData.priceBoxResult = calcResult.value = result + oneBoxDiametrPrice + oneBoxRingPrice + bottomBoxPrice + twoBoxDiametrPrice + twoBoxRingPrice + twobottomBoxPrice +' руб.';
+        };
 
         document.addEventListener('change',(event) =>{
             const target = event.target;
             if (target === onoffswitchCheckbox) {
                 if ( onoffswitchCheckbox.checked ) {
                     sendData.priceBox = 10000;
-                    sendData.twoBoxDiametr = 0;
-                    sendData.twoBoxRing = 0;
+                    hiddenTwoBox();
                 } else {
                     sendData.priceBox = 15000;
                     showTwoBox();
                 }
             } 
-
-            if (target === true) {
-                
+            if (target === myonoffswitchTwo) {
+                if ( myonoffswitchTwo.checked ) {
+                    sendData.bottomBox = true;
+                } else {
+                    sendData.bottomBox = false;
+                }
             }
-            
+            if (target === countDistance) {
+                    sendData.countDistance = target.value + ' метров';
+            }
             showPrice();
         });
 
+        document.addEventListener('input',(event) => {
+            const target = event.target;
+            if (target.tagName.toLowerCase() === 'select') {
+                if (target.closest('#oneBox-diametr-select')) {
+                    sendData.oneBoxDiametr = target.value;
+                }
+                if (target.closest('#oneBox-ring-select')) {
+                    sendData.oneBoxRing = target.value;
+                }
+                if (target.closest('#twoBox-diametr-select')) {
+                    sendData.twoBoxDiametr = target.value;
+                }
+                if (target.closest('#twoBox-ring-select')) {
+                    sendData.twoBoxRing = target.value;
+                }
+            }
+            showPrice();
+        });
 
-
-
-
-    // const calcBlock =  document.querySelector('.calc-block'), // общий блок калькулятора
-    //     calcType = document.querySelector('.calc-type'), // тип помещения
-    //     calcSquare = document.querySelector('.calc-square'), // площадь помещения
-    //     calcDay = document.querySelector('.calc-day'), // количество дней
-    //     calcCount = document.querySelector('.calc-count'), // количество помещений
-    //     totalValue = document.querySelector('#total'); // результат
-    //     let opacity = undefined;
-
-
-    // // доп задание    
-    // const showPrice = (totalCalc) => {
-    //     cancelAnimationFrame(opacity);
-    //     let op = 0;
-    //     totalValue.textContent = op;
-    //             const setOpacity = () => {
-    //                 opacity = requestAnimationFrame(setOpacity);;
-    //                     if( op < totalCalc ) {
-    //                         // let opacity = requestAnimationFrame(setOpacity);
-    //                         op +=50;
-                            
-    //                         totalValue.textContent = op;
-                        
-    //                     } else{
-    //                         cancelAnimationFrame(opacity);
-    //                     }
-    //             }
-    //             setOpacity();
-    // };    
-
-    // const coutnSum = ( price ) =>{
-
-    //     let total = 0, // результат
-    //         countValue = 1, // помещений по умолчанию 
-    //         dayValue = 1; // дней по умолчанию
-    //     const typeValue = calcType.options[calcType.selectedIndex].value,
-    //           squareValue = +calcSquare.value;
-
-    //         if( calcCount.value > 1){
-    //             countValue += ( calcCount.value - 1 )/ 10;
-    //         }
-
-    //         if (calcDay.value && calcDay.value < 5) {
-    //             dayValue *= 2;
-    //         } else if (calcDay.value && calcDay.value <10) {
-    //             dayValue *= 1.5;
-    //         }
-
-
-    //         if (typeValue &&  squareValue) {
-    //             total = price * typeValue * squareValue * countValue * dayValue;
-    //         } 
-           
+        document.addEventListener('click',(event) => {
+            const target = event.target;
+            if (target === constructBtn) {
+                console.log('target: ', target);
+                console.log('***');
+                event.preventDefault();
+                
+            }
+        });
        
-    //     showPrice(total);
-    // };    
 
-    // calcBlock.addEventListener('change', event => {
-    //     const target = event.target;
 
-    //     if (target === calcType || target === calcSquare || target === calcDay || target === calcCount ) {
-    //         // более короткий способ if (target.matches('select') || target.matches('input'))
-    //         coutnSum(price);
-    //     }
 
-    // });
 
-    // document.addEventListener('input', event => {
-    //     let target = event.target;
-    //     if (target === calcType || target === calcSquare || target === calcDay || target === calcCount) {
-    //         target.value = target.value.replace(/[^0-9]/,'');
-    //     }
-    // })
+
+  
 }; 
 
 export default calculate;

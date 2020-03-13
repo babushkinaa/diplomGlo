@@ -1,4 +1,6 @@
 'use strict';
+import sendData from './sendData';
+
 
 const toglePopup = () =>{
     const popUp = document.querySelector('.popup-call');
@@ -58,11 +60,12 @@ const toglePopup = () =>{
     document.addEventListener('click',(event)=>{
         
         const target = event.target;
-        console.dir( target);
-        console.log(target.tagName);
-        if (target.tagName.toLowerCase() === 'span' ) {
-            return;
-        }
+        // console.dir( target);
+        // console.log(target.tagName);
+        // console.log(sendData);
+        // if (target.tagName.toLowerCase() === 'span' ) {
+        //     return;
+        // }
         if (target.closest('.call-btn')) {
             showPopup(popUp);
         }
@@ -72,9 +75,9 @@ const toglePopup = () =>{
         if (target.closest('.check-btn')) {
             showPopup(popupCheck);
         }
-        if (target.closest('.construct-btn')) {
+        if (target.closest('#calc-btn-send')) {
             showPopup(popDiscount);
-            //нужно сохранить данные с калькулятора
+            // //нужно сохранить данные с калькулятора
         }
         if (target.closest('.director-btn')) {
             showPopup(popupСonsultation);

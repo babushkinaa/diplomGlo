@@ -11,7 +11,7 @@ const sendForm = () =>{
         url = './server.php';
     let body = {};               
 
-    statusMessage.style.cssText = 'font-size: 4rem;';
+    statusMessage.style.cssText = 'font-size: 2rem;';
 
      // очищаем поля
      const resetValue = (target) =>{
@@ -23,6 +23,7 @@ const sendForm = () =>{
     };
     // отображаем loader
     const showLoader =  () => {
+        statusMessage.textContent = '';
         imgLoader.style.display = 'inline-block';
         imgLoader.src = "./img/1.gif";
     };

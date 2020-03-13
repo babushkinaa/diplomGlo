@@ -108,7 +108,7 @@ export default class Validator{
                 border: 2px solid red!important
             }
             .validator-error {
-                font-size: 12px;
+                font-size: 10px!important;
                 color: red;
             }
 
