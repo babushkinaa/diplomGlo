@@ -80,6 +80,11 @@ const toglePopup = () =>{
             // //нужно сохранить данные с калькулятора
         }
         if (target.closest('.director-btn')) {
+            event.preventDefault();
+            if (target.parentNode.querySelector('.question-boss').closest('.error')) {
+                return;
+            }
+            sendData.questionDirector = target.parentNode.querySelector('.question-boss').value;
             showPopup(popupСonsultation);
             //нужно сохранить данные с сообщением
         }

@@ -3,7 +3,6 @@
 const accordion = () => {
     const accordion = document.querySelectorAll('a.collapsed');
     const nextStep = document.querySelectorAll('#next-step');
-    console.log('nextStep: ', nextStep);
     
     const selectItem = (event) =>{
         const target = event.target;

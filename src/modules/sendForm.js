@@ -1,6 +1,6 @@
 'use strict';
 import sendData from './sendData';
-console.log('sendData: ', sendData);
+// console.log('sendData: ', sendData);
 
 
 const sendForm = () =>{
@@ -8,22 +8,23 @@ const sendForm = () =>{
         successMessage = 'Ваша заявка получена',
         statusMessage = document.createElement('div'),
         imgLoader = document.createElement('img'),
-        url = './server.php';
+        url = './server_json.php';
     let body = {};               
 
     statusMessage.style.cssText = 'font-size: 2rem;';
 
      // очищаем поля
      const resetValue = (target) =>{
-        target.querySelector('#'+target.id+'-name').value = '';
-        target.querySelector('#'+target.id+'-email').value = '';
-        target.querySelector('#'+target.id+'-phone').value = '';
-        (target.querySelector('#'+target.id+'-message')) ? 
-        target.querySelector('#'+target.id+'-message').value = '': null;
+         setTimeout(()=>{
+            target.querySelector('.phone-user') ? target.querySelector('.phone-user').value = '': null;
+            target.querySelector('.user-name') ? target.querySelector('.user-name').value = '': null;
+            target.querySelector('.question-boss') ? target.querySelector('.question-boss').value = '': null;
+            statusMessage.textContent ='';
+         },5000);
+
     };
     // отображаем loader
     const showLoader =  () => {
-        statusMessage.textContent = '';
         imgLoader.style.display = 'inline-block';
         imgLoader.src = "./img/1.gif";
     };
@@ -33,25 +34,16 @@ const sendForm = () =>{
         const target = event.target;      
         if( target.querySelector('.phone-user') && target.querySelector('.phone-user').matches('.error') ) return;
         if( target.querySelector('.user-name') && target.querySelector('.user-name').matches('.error') ) return;
-        if (target.querySelector('#question') && target.querySelector('#question')){
-            target.preventDefault();
-            return;
-        }; 
-        
-        // if (target.querySelector('#question') && target.querySelector('#question').matches('.error')) return;
-        
-        // if (target.querySelector('#'+target.id+'-name').matches('.error') || 
-        //     target.querySelector('#'+target.id+'-email').matches('.error') ||
-        //     target.querySelector('#'+target.id+'-phone').matches('.error') ||
-        //     target.querySelector('#'+target.id+'-message') && target.querySelector('#'+target.id+'-message').matches('.error')) {
-        //     return;
-        // }
+        if (target.querySelector('.question-boss') && target.querySelector('.question-boss').matches('.error')) return;
+       
         target.appendChild(statusMessage);
+        statusMessage.textContent ='';
         statusMessage.appendChild(imgLoader).style.display = 'none';
 
         const formData = new FormData(target);
                 formData.forEach((val, key) => {
                     body[key] = val;
+                    sendData[key] = val;
                 });
 
         showLoader();
@@ -63,7 +55,8 @@ const sendForm = () =>{
             });
         };
 
-        postData(body)              
+        // postData(body)              
+        postData(sendData)              
             .then( response => {
                 if (response.ok) {
                     imgLoader.style.display = 'none';
@@ -71,7 +64,9 @@ const sendForm = () =>{
                 } else {
                     throw new Error(response.textContent);
                 }
-            })
+            }).then( 
+                resetValue(target)            
+            )
             .catch( error => statusMessage.textContent = errorMessage);
     });
 };

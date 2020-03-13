@@ -1,20 +1,17 @@
 'use strict';
 //поддержка IE 11
-// import '@babel/polyfill';
-// import 'nodelist-foreach-polyfill';
-// import elementClosest from 'element-closest';
-// elementClosest(window);
-// import 'formdata-polyfill';
-// import 'es6-promise';
-// import 'fetch-polyfill';
+import '@babel/polyfill';
+import 'nodelist-foreach-polyfill';
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'formdata-polyfill';
+import 'es6-promise';
+import 'fetch-polyfill';
 
 
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';
 import addMore from './modules/addMore';
-import sendData from './modules/sendData';
-// import slowScroll from './modules/slowScroll';
-// import tabs from './modules/tabs';
 import calculate from './modules/calculate';
 import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
@@ -26,26 +23,28 @@ toglePopup();
 accordion();
 // кнопка Больше...
 addMore();
-
-//прокрутка до услуг
-// slowScroll();
-//табы наши услуги
-// tabs();
-// калькулятор не знаю это работе не мешает но изначально в верстке уже есть проверка - может через css
+// калькулятор 
 calculate();
-
 //send-ajax-form
 sendForm();
+
 //маска для ввода телефона
-	//форма heder
+
+//  форма heder
 maskPhone('#phone_3');
-    //форма portfolio
+//  форма portfolio
 maskPhone('#phone_2');
-    //форма question
-// maskPhone('#phone_13');
+//  форма call-popup
+maskPhone('#phone_1');
+// форма discount-popup
+maskPhone('#phone_11');
+// форма check-popup
+maskPhone('#phone_12');
+// форма consultation-popup
+maskPhone('#phone_13');
 
 // валидатор формы
-	//форма heder
+//    форма heder
 const validatorForms = new Validator({
         selector: '.main-form', // что валидируем
         pattern: { 
@@ -92,5 +91,90 @@ const validatorForms3 = new Validator({
     }
 });
 validatorForms3.init();
+//    call-popup
+const validatorForms4 = new Validator({
+    selector: '.call-popup', // что валидируем
+    pattern: { 
+        youName: /^[А-ЯЁа-яё]*$/,
 
-console.log(sendData);
+    },
+    method: {
+        'phone_1':[ 
+            ['notEmpty'], 
+            ['pattern', 'phone'] 
+        ],
+        'name_1':[
+            ['notEmpty'], 
+            ['pattern', 'youName'] 
+        ]
+    }
+});
+validatorForms4.init();
+//    discount-popup
+const validatorForms5 = new Validator({
+    selector: '.discount-popup', // что валидируем
+    pattern: { 
+        youName: /^[А-ЯЁа-яё]*$/,
+
+    },
+    method: {
+        'phone_11':[ 
+            ['notEmpty'], 
+            ['pattern', 'phone'] 
+        ],
+        'name_11':[
+            ['notEmpty'], 
+            ['pattern', 'youName'] 
+        ]
+    }
+});
+validatorForms5.init();
+//    check-popup
+const validatorForms6 = new Validator({
+    selector: '.check-popup', // что валидируем
+    pattern: { 
+        youName: /^[А-ЯЁа-яё]*$/,
+
+    },
+    method: {
+        'phone_12':[ 
+            ['notEmpty'], 
+            ['pattern', 'phone'] 
+        ],
+        'name_12':[
+            ['notEmpty'], 
+            ['pattern', 'youName'] 
+        ]
+    }
+});
+validatorForms6.init();
+//    consultation-popup
+const validatorForms7 = new Validator({
+    selector: '.consultation-popup', // что валидируем
+    pattern: { 
+        youName: /^[А-ЯЁа-яё]*$/,
+
+    },
+    method: {
+        'phone_13':[ 
+            ['notEmpty'], 
+            ['pattern', 'phone'] 
+        ],
+        'name_13':[
+            ['notEmpty'], 
+            ['pattern', 'youName'] 
+        ]
+    }
+});
+validatorForms7.init();
+
+AOS.init({
+    // offset: 200,
+    duration: 2000,
+    // easing: 'ease-in-quad',
+    // delay: 100,
+    disable: function () {
+        var maxWidth = 768;
+        return window.innerWidth < maxWidth;
+      }
+});
