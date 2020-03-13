@@ -172,34 +172,34 @@
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
 
-                                <div class="title-text">первый колодец (приемный)</div>
-                                <div class="select-box">
+                                <div class="title-text" id = "oneBox">первый колодец (приемный)</div>
+                                <div class="select-box" id="oneBox-diametr">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="oneBox-diametr-select">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
-                                <div class="select-box">
+                                <div class="select-box" id="oneBox-ring">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="oneBox-ring-select">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
                                     </select>
                                 </div>
 
-                                <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
+                                <div class="title-text" id = "twoBox">второй колодец (дренажный)</div>
+                                <div class="select-box" id="twoBox-diametr">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="twoBox-diametr-select">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
-                                <div class="select-box">
+                                <div class="select-box" id="twoBox-ring">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="twoBox-ring-select">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
@@ -253,8 +253,8 @@
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
-                                <input type="text">
-                                <button class="button construct-btn call-btn">Получить расчет и скидку</button>
+                                <input type="text" id="count-distance">
+                                <button class="button construct-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
                     </div>
@@ -396,7 +396,7 @@
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo-two" class="panel-collapse collapse in" role="tabpanel"
+                <div id="collapseTwo-two" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Нет, не может. Армированное изделие и марка бетона М-350, позволяют выдерживать значительные

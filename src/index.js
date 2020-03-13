@@ -12,13 +12,13 @@
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';
 import addMore from './modules/addMore';
+import sendData from './modules/sendData';
 // import slowScroll from './modules/slowScroll';
 // import tabs from './modules/tabs';
-// import calculate from './modules/calculate';
+import calculate from './modules/calculate';
 import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
 import Validator from './modules/validator';
-
 
 // popup
 toglePopup();
@@ -32,7 +32,7 @@ addMore();
 //табы наши услуги
 // tabs();
 // калькулятор не знаю это работе не мешает но изначально в верстке уже есть проверка - может через css
-// calculate( 100 );
+calculate();
 
 //send-ajax-form
 sendForm();
@@ -93,3 +93,4 @@ const validatorForms3 = new Validator({
 });
 validatorForms3.init();
 
+console.log(sendData);

@@ -1,4 +1,7 @@
 'use strict';
+import sendData from './sendData';
+console.log('sendData: ', sendData);
+
 
 const sendForm = () =>{
     const errorMessage = 'Что то пошло не так',

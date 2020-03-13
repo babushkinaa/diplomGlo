@@ -58,8 +58,8 @@ const toglePopup = () =>{
     document.addEventListener('click',(event)=>{
         
         const target = event.target;
-        // console.dir( target);
-        // console.log(target.tagName);
+        console.dir( target);
+        console.log(target.tagName);
         if (target.tagName.toLowerCase() === 'span' ) {
             return;
         }
