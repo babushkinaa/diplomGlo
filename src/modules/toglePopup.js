@@ -76,9 +76,10 @@ const toglePopup = () =>{
         }
         if (target.closest('.director-btn')) {
             event.preventDefault();
-            if (target.parentNode.querySelector('.question-boss').closest('.error')) {
+            if (!target.parentNode.querySelector('.question-boss').closest('.success')) {
                 return;
             }
+           
             sendData.questionDirector = target.parentNode.querySelector('.question-boss').value;
             showPopup(popupСonsultation);
             //нужно сохранить данные с сообщением

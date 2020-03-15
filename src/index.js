@@ -9,7 +9,7 @@ import 'es6-promise';
 import 'fetch-polyfill';
 
 import AOS from 'aos';
-
+import 'aos/dist/aos.css';
 
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';

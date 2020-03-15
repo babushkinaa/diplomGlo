@@ -36,6 +36,7 @@ const sendForm = () =>{
         if( target.querySelector('.user-name') && target.querySelector('.user-name').matches('.error') ) return;
         if (target.querySelector('.question-boss') && target.querySelector('.question-boss').matches('.error')) return;
        
+       
         target.appendChild(statusMessage);
         statusMessage.textContent ='';
         statusMessage.appendChild(imgLoader).style.display = 'none';

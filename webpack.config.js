@@ -3,6 +3,7 @@
 // устанавливаем babel: npm install -D babel-loader @babel/core @babel/preset-env 
 
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: { // точка входа
         main : './src/index.js'
@@ -22,7 +23,18 @@ module.exports = {
                 test: /\.js$/, //какие файлы будем проверять
                 loader: 'babel-loader',
                 exclude: '/node_modules/', // что исключаем из проверки babel
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract(
+                  {
+                    fallback: 'style-loader',
+                    use: ['css-loader'],
+                  })
             }
         ]
-    }
+    },
+    plugins: [ 
+        new ExtractTextPlugin({filename: "main.css"})
+    ]
 };
