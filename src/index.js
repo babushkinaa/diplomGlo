@@ -8,6 +8,8 @@ import 'formdata-polyfill';
 import 'es6-promise';
 import 'fetch-polyfill';
 
+import AOS from 'aos';
+
 
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';

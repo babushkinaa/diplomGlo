@@ -33,7 +33,7 @@ const calcResult = document.querySelector('#calc-result'),
 
         
         calcResult.value = sendData.priceBox = 10000;
-        sendData.bottomBox = true;
+        sendData.bottomBox = false;
         sendData.oneBoxDiametr = '1.4 метра';
         sendData.oneBoxRing = '1 штука';
         sendData.twoBoxDiametr = false;
@@ -96,6 +96,8 @@ const calcResult = document.querySelector('#calc-result'),
             }
             sendData.priceBoxResult = calcResult.value = result + oneBoxDiametrPrice + oneBoxRingPrice + bottomBoxPrice + twoBoxDiametrPrice + twoBoxRingPrice + twobottomBoxPrice +' руб.';
         };
+        showPrice();
+
 
         document.addEventListener('change',(event) =>{
             const target = event.target;
@@ -103,6 +105,7 @@ const calcResult = document.querySelector('#calc-result'),
                 if ( onoffswitchCheckbox.checked ) {
                     sendData.priceBox = 10000;
                     hiddenTwoBox();
+
                 } else {
                     sendData.priceBox = 15000;
                     showTwoBox();

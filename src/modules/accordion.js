@@ -1,8 +1,9 @@
 'use strict';
 
 const accordion = () => {
-    const accordion = document.querySelectorAll('a.collapsed');
-    const nextStep = document.querySelectorAll('#next-step');
+    const accordion = document.querySelectorAll('a.collapsed'),
+        panelHeading =  document.querySelectorAll('.panel-heading'),
+        nextStep = document.querySelectorAll('#next-step');
     
     const selectItem = (event) =>{
         const target = event.target;
@@ -58,6 +59,9 @@ const accordion = () => {
     for(let i of accordion){
         i.addEventListener('click',selectItem);
     }
+    for(let i of panelHeading){
+        i.addEventListener('click',selectItem);
+    }
 
     const nextItem = (event) =>{
         const target = event.target;
@@ -82,11 +86,7 @@ const accordion = () => {
 
     for(let i of nextStep){
         i.addEventListener('click',nextItem);
-    }
-
-   
-    
+    }    
 };
-
 
 export default accordion;
