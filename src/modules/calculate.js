@@ -140,21 +140,6 @@ const calcResult = document.querySelector('#calc-result'),
             showPrice();
         });
 
-        document.addEventListener('click',(event) => {
-            const target = event.target;
-            if (target === constructBtn) {
-                console.log('target: ', target);
-                console.log('***');
-                event.preventDefault();
-                
-            }
-        });
-       
-
-
-
-
-
   
 }; 
 

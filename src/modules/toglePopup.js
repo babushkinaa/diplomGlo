@@ -60,12 +60,7 @@ const toglePopup = () =>{
     document.addEventListener('click',(event)=>{
         
         const target = event.target;
-        // console.dir( target);
-        // console.log(target.tagName);
-        // console.log(sendData);
-        // if (target.tagName.toLowerCase() === 'span' ) {
-        //     return;
-        // }
+        
         if (target.closest('.call-btn')) {
             showPopup(popUp);
         }
