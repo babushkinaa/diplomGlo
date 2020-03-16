@@ -10,6 +10,7 @@ import 'fetch-polyfill';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import "./modules/style.css";
 
 import toglePopup from './modules/toglePopup';
 import accordion from './modules/accordion';
