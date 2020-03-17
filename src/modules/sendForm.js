@@ -9,7 +9,8 @@ const sendForm = () =>{
         statusMessage = document.createElement('div'),
         imgLoader = document.createElement('img'),
         url = './server_json.php';
-    let body = {};               
+    let body = {};        
+    let finishSend = {};       
 
     statusMessage.style.cssText = 'font-size: 2rem;';
 
@@ -20,6 +21,7 @@ const sendForm = () =>{
             target.querySelector('.user-name') ? target.querySelector('.user-name').value = '': null;
             target.querySelector('.question-boss') ? target.querySelector('.question-boss').value = '': null;
             statusMessage.textContent ='';
+            finishSend = {};
          },5000);
 
     };
@@ -40,12 +42,19 @@ const sendForm = () =>{
         target.appendChild(statusMessage);
         statusMessage.textContent ='';
         statusMessage.appendChild(imgLoader).style.display = 'none';
-
         const formData = new FormData(target);
                 formData.forEach((val, key) => {
                     body[key] = val;
                     sendData[key] = val;
                 });
+        if (target.parentNode.parentNode.parentNode.matches('.popup-discount')) {
+            finishSend = sendData;
+        } else if (target.parentNode.parentNode.parentNode.matches('.popup-consultation')) {
+            body.message = sendData.questionDirector;
+            finishSend = body;
+        } else {
+            finishSend = body;
+        }
 
         showLoader();
         const postData = (body) => {
@@ -57,7 +66,7 @@ const sendForm = () =>{
         };
 
         // postData(body)              
-        postData(sendData)              
+        postData(finishSend)              
             .then( response => {
                 if (response.ok) {
                     imgLoader.style.display = 'none';
